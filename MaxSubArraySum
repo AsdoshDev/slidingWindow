@@ -1,0 +1,16 @@
+
+function maxSubarraySum(arr, len) {
+    let temp;
+    let max = 0;
+    if (arr.length < len) return null;
+
+    for (let i = 0; i < len; i++) {
+        max += arr[i];
+    }
+    temp = max;
+    for (let j = len; j < arr.length; j++) {
+        temp = temp + arr[j] - (arr[j - len]);
+        max = Math.max(max, temp);
+    }
+    return max;
+}
